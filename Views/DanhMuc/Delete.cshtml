@@ -1,0 +1,41 @@
+﻿@model Chinlike.Models.DanhMuc
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div style="margin-left: 400px; margin-top : 200px;">
+    <h3>XÁC NHẬN XÓA DANH MỤC</h3>
+    <h4 style="color:red">Bạn chắc chắn xóa danh mục này?</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã Danh Mục :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaDM)
+        </dd>
+
+        <dt>
+            Tên Danh Mục :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDM)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay Lại", "Index")
+        </div>
+    }
+</div>
+
+

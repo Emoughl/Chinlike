@@ -1,0 +1,13 @@
+﻿@model Chinlike.Models.User
+@{
+    ViewBag.Title = "Thongtin";
+    Layout = "~/Views/Shared/_LayoutM.cshtml";
+    var us = Session["Email"] as Chinlike.Models.User; }
+}
+
+@{ if (us != null)
+    {
+
+        <h2>Xin chào : @us.Email</h2>
+        @Html.ActionLink("Đăng xuất", "DangXuat", "Auth") } }
+

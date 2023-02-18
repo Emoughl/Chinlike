@@ -1,0 +1,105 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="~/assets/img/Logo.png">
+    <link rel="icon" href="~/assets/img/Logo.png" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin</title>
+    <link href="~/assets/css/admin2.css" rel="stylesheet" />
+    <link href="~/assets/css/admin1.css" rel="stylesheet" />
+
+</head>
+<body id="page-top">
+    <div id="wrapper" style="background-color: aliceblue ">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="line-height: 2;">
+            <li class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html"></li>
+            <li class="sidebar-brand-icon rotate-n-15">
+            </li>
+
+            <li class="sidebar-divider my-0">
+            <li class="sidebar-divider">
+                <div class="sidebar-heading" style="color: white;font-size: initial;">
+                    Tài Khoản
+                </div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="@Url.Action("Index", "Taikhoan")">
+                    <span>Quản Lí Tài Khoản</span>
+                </a>
+            </li>
+            <li class="sidebar-heading" style="color: white;font-size: initial;">
+                __________________
+            </li>
+            <li class="sidebar-divider">
+                <div class="sidebar-heading" style="color: white;font-size: initial;">
+                    Chức Năng
+                </div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="@Url.Action("Index", "DanhMuc")">
+                    <span>Quản Lí Danh Mục</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index", "MauSac")">
+                    <span>Quản Lí Màu Sắc</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Sanpham", "Admin")">
+                    <span>Quản Lí Sản Phẩm</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="@Url.Action("Index", "SanPhamTheoDanhMuc")">
+                    <span>Xếp Sản Phẩm Theo Danh Mục</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index", "SanPhamTheoKichCo")">
+                    <span>Xếp Sản Phẩm Theo Kích Cỡ </span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index", "SanPhamTheoMauSac")">
+                    <span>Xếp Sản Phẩm Theo Màu Sắc</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index", "SanPhamTheoGia")">
+                    <span>Xếp Sản Phẩm Theo Giá</span>
+                </a>
+            </li>
+            <li class="sidebar-heading" style="color: white;font-size: initial;">
+                __________________
+            </li>
+            <li class="sidebar-divider">
+                <div class="sidebar-heading" style="color: white;font-size: initial;">
+                    Tình Trạng
+                </div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="@Url.Action("Index", "Sanphammoicapnhat")">
+                    <span>Sản Phẩm Mới Cập Nhật</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index", "Sanphamhot")">
+                    <span>Sản Phẩm Hot</span>
+                </a>
+            </li>
+
+
+        </ul>
+        @RenderBody()
+    </div>
+
+</body>
+
+</html>

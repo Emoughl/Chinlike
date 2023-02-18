@@ -1,0 +1,86 @@
+﻿@model Chinlike.Models.Product
+@{
+    ViewBag.Title = "Themmoisanpham";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div style="margin-left: 200px; margin-top : 100px;">
+    <h2>   Thêm Sản Phẩm Mới</h2>
+
+    @using (Html.BeginForm("Themmoisanpham", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                Mã Sản Phẩm
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MaP, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MaP, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                Tên Sản Phẩm
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TenP, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TenP, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                Mô Tả
+                <div class="col-md-10">
+                    <textarea cols="100" rows="10" name="Mota"> </textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                Ảnh
+                <div class="col-md-10">
+                    <div class="col-md-10">
+                        <input type="file" name="fileUpload" />
+                        @ViewBag.Thongbao
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                Giá Bán
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Gia, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Gia, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                Số Lượng
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SoLuong, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                Ngày Cập Nhật
+                <div class="col-md-10">
+                    <input type="date" name="Ngaycapnhat" />
+                    @Html.ValidationMessageFor(model => model.NgayCapNhat, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+        </div>
+        <div class="form-group" style="margin-left:650px">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Tạo" class="btn btn-default" style="color:red" />
+                | @Html.ActionLink("Trở Về", "/SanPham")
+            </div>
+
+        </div>
+    }
+</div>
+
+
+

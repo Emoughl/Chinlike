@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Chinlike.Models.Main>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div style="margin-left: 400px; margin-top : 200px;">
+    <h2 style="color: red;">QUẢN LÝ PHÂN LOẠI DANH MỤC</h2>
+
+    <p>
+        @Html.ActionLink("THÊM MỚI", "Create")
+    </p>
+    <table class="table">
+
+
+        <tr>
+            <th>
+                MÃ MAIN
+            </th>
+            <th>
+                MÃ DANH MỤC
+            </th>
+
+            <th>
+                MÃ SẢN PHẨM
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaMain)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaMain)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.MaMain }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaMain })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+
+
+

@@ -1,0 +1,46 @@
+﻿@model IEnumerable < Chinlike.Models.MauSac>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div style="margin-left: 400px; margin-top : 200px;">
+    <h2 style="color: red;">QUẢN LÝ DANH SÁCH MÀU SẮC</h2>
+
+    <p>
+        @Html.ActionLink("THÊM MỚI", "Create")
+    </p>
+    <table class="table">
+
+
+        <tr>
+            <th>
+                MÃ MÀU
+            </th>
+
+            <th>
+                TÊN MÀU
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaMau)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenMau)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.MaMau }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaMau })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+

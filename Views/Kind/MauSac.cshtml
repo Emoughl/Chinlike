@@ -1,0 +1,11 @@
+﻿@model  IEnumerable<Chinlike.Models.MauSac>
+<p class="widget-title mb-0 font-weight-medium font-size-3 " style="
+    line-height: 4;">Màu Sắc</p>
+<div class=" list-group" style="font-size: 17px;line-height: 2;">
+    @foreach (var item in Model)
+    {
+        <a href="@Url.Action("SanPhamTheoMauSac", "Kind",new { id = item.MaMau})" class="list-item">
+            @item.TenMau
+        </a>
+    }
+</div>

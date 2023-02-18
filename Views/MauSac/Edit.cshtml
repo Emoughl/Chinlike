@@ -1,0 +1,39 @@
+﻿@model Chinlike.Models.MauSac
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" style="margin-left: 400px; margin-top : 200px;">
+        <h4>CHỈNH SỬA THÔNG TIN MÀU SẮC</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaMau)
+        <div class="form-group">
+            Mã Màu Sắc
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaMau, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MaMau, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            Tên Màu Sắc
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaMau, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenMau, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="LƯU" class="btn btn-default" />
+                | @Html.ActionLink("Quay Lại", "Index")
+            </div>
+        </div>
+    </div>
+}
+
+

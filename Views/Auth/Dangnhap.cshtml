@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Dangnhap";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+@ViewBag.Thongbao
+<div id="login" data-target-group="idForm">
+    <div class="Thongbao">
+    </div>
+    <header class="border-bottom px-4 px-md-6 py-4">
+        <h2 class="font-size-3 mb-0 d-flex align-items-center"><i class="flaticon-user mr-3 font-size-5"></i>Tài Khoản</h2>
+    </header>
+
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <div class="p-4 p-md-6">
+
+            <div class="form-group mb-4">
+                <div class="js-form-message js-focus-state">
+                    <label id="signinEmailLabel" class="form-label" for="signinEmail">Email</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" class="form-control rounded-0 height-4 px-4" name="email" id="signinEmail" placeholder="Nhập Email" aria-label="Nhập Email" aria-describedby="signinEmailLabel" required>
+                        @ViewData["Loi1"]
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group mb-4">
+                <div class="js-form-message js-focus-state">
+                    <label id="signinPasswordLabel" class="form-label" for="signinPassword">Mật Khẩu</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input id="password-field" type="password" class="form-control" name="password" value="">
+                        <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        @ViewData["Loi2"]
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between mb-5 align-items-center">
+
+                <a class="text-dark font-size-2 t-d-u link-muted font-weight-medium" style="text-align:center;" href="/Auth/Quenmatkhau">Quên Mật Khẩu</a>
+            </div>
+            <div class="mb-4d75">
+                <button type="submit" class="btn btn-block py-3 rounded-0 btn-dark">Đăng Nhập</button>
+            </div>
+            <div class="mb-2">
+                <a href="/Auth/Dangky" class="btn btn-block py-3 rounded-0 btn-outline-dark font-weight-medium">Đăng Ký Ngay</a>
+            </div>
+        </div>
+        <div class="loginbtn">
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <a href="/Body/Index" onclick="signOut();">Sign out</a>
+            <script>
+                function signOut() {
+                    var auth2 = gapi.auth2.getAuthInstance();
+                    auth2.signOut().then(function () {
+                        console.log('User signed out.');
+                    });
+                }
+            </script>
+            <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="rounded" data-auto-logout-link="true" data-use-continue-as="false"></div>
+
+        </div>
+        <script>
+            $(".toggle-password").click(function () {
+
+                $(this).toggleClass("fa-eye fa-eye-slash");
+                var input = $($(this).attr("toggle"));
+                if (input.attr("type") == "password") {
+                    input.attr("type", "text");
+                } else {
+                    input.attr("type", "password");
+                }
+            });
+        </script>
+        <style>
+            .field-icon {
+                margin-left: -25px;
+                margin-top: -25px;
+                position: relative;
+                z-index: 2;
+            }
+
+            .container {
+                padding-top: 50px;
+                margin: auto;
+            }
+        </style>
+    }
+</div>
+

@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Chinlike" Class="DataChinlikeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=LAPTOP-2S0CP2JK\SQLEXPRESS01;Initial Catalog=Chinlike;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ChinlikeConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Admin" Member="Admins">
+    <Type Name="Admin">
+      <Column Name="UserAdmin" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="PassAdmin" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="MaUser" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MatKhau" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Sodienthoai" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="User_DonDatHang" Member="DonDatHangs" ThisKey="MaUser" OtherKey="MaUser" Type="DonDatHang" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChiTietDonHang" Member="ChiTietDonHangs">
+    <Type Name="ChiTietDonHang">
+      <Column Name="MaDonHang" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaP" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DonGia" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Association Name="DonDatHang_ChiTietDonHang" Member="DonDatHang" ThisKey="MaDonHang" OtherKey="MaDonHang" Type="DonDatHang" IsForeignKey="true" />
+      <Association Name="Product_ChiTietDonHang" Member="Product" ThisKey="MaP" OtherKey="MaP" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DanhMuc" Member="DanhMucs">
+    <Type Name="DanhMuc">
+      <Column Name="MaDM" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenDM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="DanhMuc_Main" Member="Mains" ThisKey="MaDM" OtherKey="MaDM" Type="Main" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DonDatHang" Member="DonDatHangs">
+    <Type Name="DonDatHang">
+      <Column Name="MaDonHang" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DaThanhToan" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TinhTrangGiaoHang" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NgayDat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NgayGiao" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MaUser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="DonDatHang_ChiTietDonHang" Member="ChiTietDonHangs" ThisKey="MaDonHang" OtherKey="MaDonHang" Type="ChiTietDonHang" />
+      <Association Name="User_DonDatHang" Member="User" ThisKey="MaUser" OtherKey="MaUser" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Gia" Member="Gias">
+    <Type Name="Gia">
+      <Column Name="MaGia" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="GiaCa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Gia_GiaDo" Member="GiaDos" ThisKey="MaGia" OtherKey="MaGia" Type="GiaDo" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GiaDo" Member="GiaDos">
+    <Type Name="GiaDo">
+      <Column Name="IdGia" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaGia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Gia_GiaDo" Member="Gia" ThisKey="MaGia" OtherKey="MaGia" Type="Gia" IsForeignKey="true" />
+      <Association Name="Product_GiaDo" Member="Product" ThisKey="MaP" OtherKey="MaP" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IdHot" Member="IdHots">
+    <Type Name="IdHot">
+      <Column Name="MaHot" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaSPHot" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Product_IdHot" Member="Product" ThisKey="MaP" OtherKey="MaP" Type="Product" IsForeignKey="true" />
+      <Association Name="SPHot_IdHot" Member="SPHot" ThisKey="MaSPHot" OtherKey="MaSPHot" Type="SPHot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IDNew" Member="IDNews">
+    <Type Name="IDNew">
+      <Column Name="IDNew" Member="IDNew1" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaNew" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="New_IDNew" Member="New" ThisKey="MaNew" OtherKey="MaNew" Type="New" IsForeignKey="true" />
+      <Association Name="Product_IDNew" Member="Product" ThisKey="MaP" OtherKey="MaP" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IdTinTuc" Member="IdTinTucs">
+    <Type Name="IdTinTuc">
+      <Column Name="IdTinTuc" Member="IdTinTuc1" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaTinTuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Product_IdTinTuc" Member="Product" ThisKey="MaP" OtherKey="MaP" Type="Product" IsForeignKey="true" />
+      <Association Name="TinTuc_IdTinTuc" Member="TinTuc" ThisKey="MaTinTuc" OtherKey="MaTinTuc" Type="TinTuc" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KichCo" Member="KichCos">
+    <Type Name="KichCo">
+      <Column Name="MaKC" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenKC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="KichCo_Size" Member="Sizes" ThisKey="MaKC" OtherKey="MaKC" Type="Size" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Main" Member="Mains">
+    <Type Name="Main">
+      <Column Name="MaMain" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaDM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="DanhMuc_Main" Member="DanhMuc" ThisKey="MaDM" OtherKey="MaDM" Type="DanhMuc" IsForeignKey="true" />
+      <Association Name="Product_Main" Member="Product" ThisKey="MaP" OtherKey="MaP" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Mau" Member="Maus">
+    <Type Name="Mau">
+      <Column Name="IdMau" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaMau" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="MauSac_Mau" Member="MauSac" ThisKey="MaMau" OtherKey="MaMau" Type="MauSac" IsForeignKey="true" />
+      <Association Name="Product_Mau" Member="Product" ThisKey="MaP" OtherKey="MaP" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MauSac" Member="MauSacs">
+    <Type Name="MauSac">
+      <Column Name="MaMau" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenMau" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="MauSac_Mau" Member="Maus" ThisKey="MaMau" OtherKey="MaMau" Type="Mau" />
+    </Type>
+  </Table>
+  <Table Name="dbo.New" Member="News">
+    <Type Name="New">
+      <Column Name="MaNew" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="New" Member="New1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="New_IDNew" Member="IDNews" ThisKey="MaNew" OtherKey="MaNew" Type="IDNew" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Product" Member="Products">
+    <Type Name="Product">
+      <Column Name="MaP" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenP" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MoTa" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Anh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Gia" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SoLuong" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgayCapNhat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Product_ChiTietDonHang" Member="ChiTietDonHangs" ThisKey="MaP" OtherKey="MaP" Type="ChiTietDonHang" />
+      <Association Name="Product_GiaDo" Member="GiaDos" ThisKey="MaP" OtherKey="MaP" Type="GiaDo" />
+      <Association Name="Product_IdHot" Member="IdHots" ThisKey="MaP" OtherKey="MaP" Type="IdHot" />
+      <Association Name="Product_IDNew" Member="IDNews" ThisKey="MaP" OtherKey="MaP" Type="IDNew" />
+      <Association Name="Product_IdTinTuc" Member="IdTinTucs" ThisKey="MaP" OtherKey="MaP" Type="IdTinTuc" />
+      <Association Name="Product_Main" Member="Mains" ThisKey="MaP" OtherKey="MaP" Type="Main" />
+      <Association Name="Product_Mau" Member="Maus" ThisKey="MaP" OtherKey="MaP" Type="Mau" />
+      <Association Name="Product_Size" Member="Sizes" ThisKey="MaP" OtherKey="MaP" Type="Size" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Size" Member="Sizes">
+    <Type Name="Size">
+      <Column Name="IdSize" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaKC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="KichCo_Size" Member="KichCo" ThisKey="MaKC" OtherKey="MaKC" Type="KichCo" IsForeignKey="true" />
+      <Association Name="Product_Size" Member="Product" ThisKey="MaP" OtherKey="MaP" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SPHot" Member="SPHots">
+    <Type Name="SPHot">
+      <Column Name="MaSPHot" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SPHot" Member="SPHot1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="SPHot_IdHot" Member="IdHots" ThisKey="MaSPHot" OtherKey="MaSPHot" Type="IdHot" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TinTuc" Member="TinTucs">
+    <Type Name="TinTuc">
+      <Column Name="MaTinTuc" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TinTuc" Member="TinTuc1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="TinTuc_IdTinTuc" Member="IdTinTucs" ThisKey="MaTinTuc" OtherKey="MaTinTuc" Type="IdTinTuc" />
+    </Type>
+  </Table>
+</Database>

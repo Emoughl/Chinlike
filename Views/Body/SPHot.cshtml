@@ -1,0 +1,8 @@
+﻿@model  IEnumerable<Chinlike.Models.SPHot>
+@foreach (var item in Model)
+{
+    <a href="@Url.Action("IDHot", "Body",new { id = item.MaSPHot})">
+        @item.SPHot1
+    </a>
+}
+

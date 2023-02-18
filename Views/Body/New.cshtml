@@ -1,0 +1,8 @@
+﻿@model  IEnumerable<Chinlike.Models.New>
+@foreach (var item in Model)
+{
+    <a href="@Url.Action("IDNew", "Body",new { id = item.MaNew})">
+        @item.New1
+    </a>
+}
+
